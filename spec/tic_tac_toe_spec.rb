@@ -55,4 +55,30 @@ describe "Tic Tac Toe" do
             expect(@tic_tac_toe.winning_combinations).to all have_attributes(size: 3)
         end
     end
+
+    context "taking a turn" do
+        it "receives coordinates" do
+            expect(@tic_tac_toe.turn).to eq 4
+        end
+        it "checks something is not already in the specified square" do
+            expect(@tic_tac_toe.is_square_free).to be true
+        end
+
+        it "checks whose turn it is" do
+            expect(@tic_tac_toe.check_turn).to eq "X" 
+        end
+
+        it "updates the board" do
+            expect(@tic_tac_toe.update_board(4)).to eq [nil,nil,nil,nil,"X",nil,nil,nil,nil]
+        end
+
+        it "updates the user's turn" do
+            expect(@tic_tac_toe.update_turn).to eq [{"my_turn"=>false, "player"=>"X"}, {"my_turn"=>true, "player"=>"O"}]
+        end
+
+        xit "returns an error message if square is occupied" do
+            expect(@tic_tac_toe.is_square_free).to eq "Please choose another square"
+        end
+    end
+
 end

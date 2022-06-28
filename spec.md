@@ -25,9 +25,15 @@
 - test by entering different coordinates
 - check something is not already in the specified square
   - throw error if yes
+  - check whose turn it is -> returns X or O
   - else update board with X or O
   - update turn of player in their hash
+    <br> -------- HERE --------
   - after each turn:
     - check if there is a winning a combination - then a player wins
     - it fills the board - finished with a draw
     - otherwise move on to next turn
+
+## Checkpoint 28.06
+
+- original board and players objects are not being updated with the methods we are making
