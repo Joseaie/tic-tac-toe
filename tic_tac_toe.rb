@@ -1,3 +1,5 @@
+require 'stringio'
+
 class TicTacToe
     def initialize
         @board = Array.new(9)
@@ -28,7 +30,7 @@ class TicTacToe
     end
 
     def turn 
-        4
+        $stdin.gets.chomp.to_i
     end
 
     def is_square_free
@@ -46,9 +48,35 @@ class TicTacToe
     def update_turn
         @players = players.each{ | player | player["my_turn"] == true ?  player["my_turn"] = false : player["my_turn"] = true }
     end
+
+    def check_winning_combo(board)
+        locations_of_current_player = board.each_index.select{|i| board[i] == check_turn}
+        winning_combinations.each do | combination |
+          return true if (combination & locations_of_current_player) == combination
+        end
+        return false
+    end
+
+    def announce_winner
+        "Player #{check_turn} wins!"
+    end
+
+    def full_board?
+        @board.count(nil) == 0 ? true : false
+    end
+
+    def announce_draw
+        "GAME OVER! It's a draw."
+    end
+
+    def play_game
+        while check_winning_combo(board) == false
+            puts $stdin
+            update_board(turn)
+            update_turn
+            
+            return @board
+        end
+        @board
+    end
 end
-
-
-
-
-

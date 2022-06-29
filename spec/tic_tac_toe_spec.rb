@@ -1,4 +1,5 @@
 require_relative "../tic_tac_toe.rb"
+require 'stringio'
 
 describe "Tic Tac Toe" do
 
@@ -57,9 +58,11 @@ describe "Tic Tac Toe" do
 
     context "taking a turn" do
         it "receives coordinates" do
+            $stdin = StringIO.new('4')
             expect(tic_tac_toe.turn).to eq 4
         end
         it "checks something is not already in the specified square" do
+            $stdin = StringIO.new('4')
             expect(tic_tac_toe.is_square_free).to be true
         end
 
@@ -76,8 +79,33 @@ describe "Tic Tac Toe" do
         end
 
         it "returns an error message if square is occupied" do
+            $stdin = StringIO.new('4')
             expect(tic_tac_toe.is_square_free).to eq "Please choose another square"
         end
     end
 
+    context "after each turn" do
+        it "returns false if there is not a winning combination" do 
+            expect(tic_tac_toe.check_winning_combo(tic_tac_toe.board)).to be false
+        end 
+
+        it "returns true if there is a winning combination" do 
+            expect(tic_tac_toe.check_winning_combo(["O","O","O",nil,"X",nil,nil,"X",nil])).to be true
+        end
+
+        it "announces winner" do
+            winner = tic_tac_toe.check_winning_combo(["O","O","O",nil,"X",nil,nil,"X",nil])
+            if winner
+                expect(tic_tac_toe.announce_winner).to eq "Player O wins!"
+            end
+        end
+
+        it "checks if board is full" do
+            expect(tic_tac_toe.full_board?).to be false
+        end
+
+        it "announces draw" do
+            expect(tic_tac_toe.announce_draw). to eq "GAME OVER! It's a draw."
+        end
+    end
 end
