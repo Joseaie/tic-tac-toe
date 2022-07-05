@@ -19,6 +19,7 @@ describe 'Starting the game' do
         io.puts('0')
         io.puts('5')
         $stdin = io
+        
         expect(tic_tac_toe.play_game).to eq "Player X wins!"
     end
 end
