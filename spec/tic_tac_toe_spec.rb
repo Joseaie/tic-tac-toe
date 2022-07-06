@@ -108,4 +108,14 @@ describe "Tic Tac Toe" do
             expect(tic_tac_toe.announce_draw). to eq "GAME OVER! It's a draw."
         end
     end
+
+    context "Displaying the board" do
+        it "can display the empty board" do
+            expect(tic_tac_toe.display_board([nil,nil,nil,nil,nil,nil,nil,nil,nil])).to eq "   |   |   \n-----------\n   |   |   \n-----------\n   |   |   "
+        end
+
+        it "it can add a symbol to the board and displays correctly" do
+            expect(tic_tac_toe.display_board([nil,nil,nil,nil,"X",nil,nil,nil,nil])).to eq "   |   |   \n-----------\n   | X |   \n-----------\n   |   |   "
+        end
+    end
 end

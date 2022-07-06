@@ -33,6 +33,12 @@
     - it fills the board - finished with a draw
     - otherwise move on to next turn
 
+### Displaying the board
+
+- it can display the empty board
+- it can add a symbol to the board and displays correctly
+
+
 ## *Acceptance Tests*
 
 - I can can choose where to put my move
@@ -41,3 +47,5 @@
 <!-- - After their move, I expect to see their symbol on the board too and so on -->
 - After several moves if either of us have won, I expect the game to end and a message to be displayed
 - I expect the game to stop if there is a draw and a message to be displayed
+
+"   |   |   \n-----------\n   |   |   \n-----------\n   |   |   "

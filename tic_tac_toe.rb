@@ -8,8 +8,16 @@ class TicTacToe
             { "player" => "O", "my_turn" => false }
           ]
     end
+
     def board
         @board
+    end
+
+    def display_board(board)
+        show_board = board.map { |element| element == nil ? " " : element}
+        
+        puts "\n", " #{show_board[0]} | #{show_board[1]} | #{show_board[2]} \n-----------\n #{show_board[3]} | #{show_board[4]} | #{show_board[5]} \n-----------\n #{show_board[6]} | #{show_board[7]} | #{show_board[8]} "
+        " #{show_board[0]} | #{show_board[1]} | #{show_board[2]} \n-----------\n #{show_board[3]} | #{show_board[4]} | #{show_board[5]} \n-----------\n #{show_board[6]} | #{show_board[7]} | #{show_board[8]} "
     end
     
     def players
@@ -71,6 +79,7 @@ class TicTacToe
         "GAME OVER! It's a draw."
     end
 
+
    # check if the board is full or if there is a winning combo
    # solid state of when the game the game ends
    # otherwise do this loop:
@@ -85,19 +94,25 @@ class TicTacToe
         
     # end
     def play_game
-        # puts $stdin.string
         while !full_board? do
             
             return @board if !turn
-            puts @turn
+
             update_board(@turn)
+            display_board(@board)
 
             if check_winning_combo(@board)
+                puts announce_winner
                 return announce_winner
             end
 
             update_turn
         end
-
+        puts announce_draw
+        announce_draw
     end
 end
+
+
+tic_tac_toe = TicTacToe.new
+tic_tac_toe.play_game
