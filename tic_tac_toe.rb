@@ -43,8 +43,10 @@ class TicTacToe
         @turn
     end
 
-    def is_square_free
-        board[turn] == nil ? true : "Please choose another square"
+    def is_value_within_bounds(val)
+        unless val =~ /[0-9]/
+            "Please enter a number between 0 and 8"
+        end
     end
 
     def check_turn
