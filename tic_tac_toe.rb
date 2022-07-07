@@ -16,7 +16,7 @@ class TicTacToe
     def display_board(board)
         show_board = board.map { |element| element == nil ? " " : element}
         
-        puts "\n", " #{show_board[0]} | #{show_board[1]} | #{show_board[2]} \n-----------\n #{show_board[3]} | #{show_board[4]} | #{show_board[5]} \n-----------\n #{show_board[6]} | #{show_board[7]} | #{show_board[8]} "
+        puts "\n", " #{show_board[0]} | #{show_board[1]} | #{show_board[2]} \n-----------\n #{show_board[3]} | #{show_board[4]} | #{show_board[5]} \n-----------\n #{show_board[6]} | #{show_board[7]} | #{show_board[8]} \n\n"
         " #{show_board[0]} | #{show_board[1]} | #{show_board[2]} \n-----------\n #{show_board[3]} | #{show_board[4]} | #{show_board[5]} \n-----------\n #{show_board[6]} | #{show_board[7]} | #{show_board[8]} "
     end
     
