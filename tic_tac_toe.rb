@@ -39,12 +39,22 @@ class TicTacToe
 
     def turn 
         @turn = $stdin.gets&.chomp
-        @turn ? @turn = @turn.to_i : nil
+        return nil if !@turn
+
+        is_value_within_bounds(@turn)
+       
+        @turn = @turn.to_i
+
+        is_square_free(@turn)
         @turn
     end
 
     def is_square_free(val)
-        board[val] == nil ? true : "Please choose another square"
+        unless board[val] == nil
+            puts "Please choose another square"
+            turn
+        end
+        val
     end
 
     def is_value_within_bounds(val)
