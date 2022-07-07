@@ -86,6 +86,11 @@ describe "Tic Tac Toe" do
             # $stdin = StringIO.new('2')
             expect { tic_tac_toe.is_value_within_bounds(12) }.to output(/Please enter a number between 0 and 8/).to_stdout
         end
+
+        it "prints something when asking for input" do
+            expect { tic_tac_toe.turn }.to output(/Player O, enter your go:/).to_stdout
+        end
+
     end
 
     context "after each turn" do

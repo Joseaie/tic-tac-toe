@@ -37,7 +37,8 @@ class TicTacToe
         ]
     end
 
-    def turn 
+    def turn
+        puts "Player #{check_turn}, enter your go:"
         @turn = $stdin.gets&.chomp
         return nil if !@turn
 
