@@ -48,9 +48,11 @@ class TicTacToe
     end
 
     def is_value_within_bounds(val)
-        unless val =~ /[0-9]/
-            "Please enter a number between 0 and 8"
+        unless val =~ /^[0-9]$/
+           puts "Please enter a number between 0 and 8"
+           turn
         end
+        val
     end
 
     def check_turn

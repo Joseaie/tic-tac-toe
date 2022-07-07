@@ -84,7 +84,7 @@ describe "Tic Tac Toe" do
 
         it "returns an error message if user input is out of bounds" do
             # $stdin = StringIO.new('2')
-            expect(tic_tac_toe.is_value_within_bounds(12)).to eq "Please enter a number between 0 and 8"
+            expect { tic_tac_toe.is_value_within_bounds(12) }.to output(/Please enter a number between 0 and 8/).to_stdout
         end
     end
 
