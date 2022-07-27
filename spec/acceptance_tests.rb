@@ -29,6 +29,23 @@ describe 'Playing the game' do
         end
     end
     
+    context "Taking a turn" do
+        tic_tac_toe_ = TicTacToe.new
+
+        it "doesn't allow me to input a value out of bounds and allows me to input something else" do
+            $stdin = StringIO.new('12')
+            expect{ tic_tac_toe_.play_game }.to output(/Please enter a number between 0 and 8/).to_stdout
+        end
+
+        it "doesn't allow me to place my symbol in an occupied square" do
+            $stdin = StringIO.new('8')
+            tic_tac_toe_.play_game
+            
+            $stdin = StringIO.new ('8')
+            expect{ tic_tac_toe_.play_game }.to output(/Please choose another square/).to_stdout
+        end
+    end
+    
     tic_tac_toe_draw = TicTacToe.new
     context 'Drawing a game' do
         

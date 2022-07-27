@@ -1,5 +1,7 @@
 # Tic Tac Toe
-## *Unit Tests*
+
+## _Unit Tests_
+
 ### Create a board
 
 - it is empty
@@ -32,14 +34,16 @@
     - check if there is a winning a combination - then a player wins and game stops
     - it fills the board - finished with a draw
     - otherwise move on to next turn
+  - display an error message when they input a number out of bounds (8 < number > 0)
 
 ### Displaying the board
+
+" | | \n-----------\n | | \n-----------\n | | "
 
 - it can display the empty board
 - it can add a symbol to the board and displays correctly
 
-
-## *Acceptance Tests*
+## _Acceptance Tests_
 
 - I can can choose where to put my move
 <!-- - After my move, I expect to see my symbol on the board -->
@@ -48,4 +52,6 @@
 - After several moves if either of us have won, I expect the game to end and a message to be displayed
 - I expect the game to stop if there is a draw and a message to be displayed
 
-"   |   |   \n-----------\n   |   |   \n-----------\n   |   |   "
+- check the place someone has decided to put their move is not already taken
+- There is guidance on how to play the game before it starts
+- I can see whose turn it is

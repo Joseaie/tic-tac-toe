@@ -16,7 +16,7 @@ class TicTacToe
     def display_board(board)
         show_board = board.map { |element| element == nil ? " " : element}
         
-        puts "\n", " #{show_board[0]} | #{show_board[1]} | #{show_board[2]} \n-----------\n #{show_board[3]} | #{show_board[4]} | #{show_board[5]} \n-----------\n #{show_board[6]} | #{show_board[7]} | #{show_board[8]} "
+        puts "\n", " #{show_board[0]} | #{show_board[1]} | #{show_board[2]} \n-----------\n #{show_board[3]} | #{show_board[4]} | #{show_board[5]} \n-----------\n #{show_board[6]} | #{show_board[7]} | #{show_board[8]} \n\n"
         " #{show_board[0]} | #{show_board[1]} | #{show_board[2]} \n-----------\n #{show_board[3]} | #{show_board[4]} | #{show_board[5]} \n-----------\n #{show_board[6]} | #{show_board[7]} | #{show_board[8]} "
     end
     
@@ -37,14 +37,33 @@ class TicTacToe
         ]
     end
 
-    def turn 
+    def turn
+        puts "Player #{check_turn}, enter your go:"
         @turn = $stdin.gets&.chomp
-        @turn ? @turn = @turn.to_i : nil
+        return nil if !@turn
+
+        is_value_within_bounds(@turn)
+       
+        @turn = @turn.to_i
+
+        is_square_free(@turn)
         @turn
     end
 
-    def is_square_free
-        board[turn] == nil ? true : "Please choose another square"
+    def is_square_free(val)
+        unless board[val] == nil
+            puts "Please choose another square"
+            turn
+        end
+        val
+    end
+
+    def is_value_within_bounds(val)
+        unless val =~ /^[0-9]$/
+           puts "Please enter a number between 0 and 8"
+           turn
+        end
+        val
     end
 
     def check_turn

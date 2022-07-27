@@ -63,7 +63,7 @@ describe "Tic Tac Toe" do
         end
         it "checks something is not already in the specified square" do
             $stdin = StringIO.new('4')
-            expect(tic_tac_toe.is_square_free).to be true
+            expect(tic_tac_toe.is_square_free(4)).to be 4
         end
 
         it "checks whose turn it is" do
@@ -79,9 +79,18 @@ describe "Tic Tac Toe" do
         end
 
         it "returns an error message if square is occupied" do
-            $stdin = StringIO.new('4')
-            expect(tic_tac_toe.is_square_free).to eq "Please choose another square"
+            expect { tic_tac_toe.is_square_free(4) }.to output(/Please choose another square/).to_stdout
         end
+
+        it "returns an error message if user input is out of bounds" do
+            # $stdin = StringIO.new('2')
+            expect { tic_tac_toe.is_value_within_bounds(12) }.to output(/Please enter a number between 0 and 8/).to_stdout
+        end
+
+        it "prints something when asking for input" do
+            expect { tic_tac_toe.turn }.to output(/Player O, enter your go:/).to_stdout
+        end
+
     end
 
     context "after each turn" do
